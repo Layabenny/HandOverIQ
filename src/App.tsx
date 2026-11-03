@@ -1006,16 +1006,17 @@ export default function App() {
     )
   }
 
-  return withLogout(
-    <ProjectModules
-      onBack={() => navigate('overview')}
-      initialTab={
-        view === 'handover'
-          ? 'generator'
-          : view === 'approval'
-            ? 'approval'
-            : 'intelligence'
-      }
-    />
-  )
+ return withLogout(
+  <ProjectModules
+    onBack={() => navigate('overview')}
+    onLogout={logout}
+    initialTab={
+      view === 'handover'
+        ? 'generator'
+        : view === 'approval'
+          ? 'approval'
+          : 'intelligence'
+    }
+  />
+)
 }

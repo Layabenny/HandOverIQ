@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: handoveriq-api
+    runtime: python
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    region: oregon
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: NEXUS_AUTH_SECRET
+        generateValue: true
+      - key: FRONTEND_ORIGINS
+        value: "*"

@@ -42,7 +42,7 @@ type Handover = {
 }
 
 const label = (s: string) =>
-  s.replaceAll('_', ' ').replace(/\b\w/g, x => x.toUpperCase())
+  s.replace(/_/g, ' ').replace(/\b\w/g, (x: string) => x.toUpperCase())
 
 async function api(path: string, init?: RequestInit) {
   const r = await fetch(`${API}${path}`, {
